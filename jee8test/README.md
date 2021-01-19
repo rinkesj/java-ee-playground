@@ -1,3 +1,6 @@
+# Description
+Simple Java EE Rest Ping project deployed on Websphere Traditional via their official docker image
+
 # Build
 mvn clean package && docker build -t com.dere/jee8test .
 

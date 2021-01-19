@@ -7,6 +7,6 @@ docker run -d -v $(pwd)/PASSWORD:/tmp/PASSWORD -p 9043:9043 -p 9443:9443 -p 9080
 # LOG TAIL
 docker logs -f --tail=all jee8test
 
-#RESOURCES
+# RESOURCES
 WAS image info: https://github.com/WASdev/ci.docker.websphere-traditional
 

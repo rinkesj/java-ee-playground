@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
+
+<h:head>
+	<title>Hello World JSF 2.3</title>
+</h:head>
+
+<h:body>
+	<div class="card">
+		Available columns are <b>code</b>, <b>name</b>, <b>category</b> and <b>quantity</b>.
+
+		<h:form id="form">
+			<div class="p-mt-3 p-mb-5">
+				<p:inputText id="columnHeader" value="#{dtColumnsView.columnHeader}" size="50" styleClass="p-mr-2" />
+				<p:inputText id="columnExpression" value="#{dtColumnsView.columnExpression}" size="50"
+					styleClass="p-mr-2" />
+				<p:commandButton update="products" action="#{dtColumnsView.updateColumns}" value="Update"
+					process="@parent" icon="pi pi-refresh" />
+			</div>
+
+			<p:accordionPanel value="#{dtColumnsView.columns}" var="column" multiple="true">
+            <p:tab title="#{column.header}">
+                <h:outputText value="#{column.header}" />
+				<h:outputText value="#{column.property}" />
+            </p:tab>
+        	</p:accordionPanel>
+
+			<!-- <p:orderList value="#{dtColumnsView.columns}" var="column" itemValue="#{column}" controlsLocation="left"
+				responsive="true">
+				<p:column headerText="">
+					<p:panel header="#{column.header}" toggleable="true" closable="false" toggleSpeed="500"
+						collapsed="true" widgetVar="panel">
+						<h:outputText value="#{column.header}" />
+						<h:outputText value="#{column.property}" />
+					</p:panel>
+				</p:column>
+			</p:orderList> -->
+
+			<!-- <p:dataTable id="columns" var="column"
+				value="#{dtColumnsView.columns}" widgetVar="columnTable">
+
+				<p:column headerText="Column Header">
+					<h:outputText value="#{column.header}" />
+				</p:column>
+
+				<p:column headerText="Expression">
+					<h:outputText value="#{column.property}" />
+				</p:column>
+
+			</p:dataTable> -->
+
+			<p:dataTable id="products" var="product" value="#{dtColumnsView.products}" widgetVar="productsTable"
+				filteredValue="#{dtColumnsView.filteredProducts}">
+
+				<p:columns value="#{dtColumnsView.columns}" var="column" headerText="#{column.header}"
+					field="#{column.property}">
+				</p:columns>
+
+			</p:dataTable>
+		</h:form>
+	</div>
+</h:body>
+
+</html>
